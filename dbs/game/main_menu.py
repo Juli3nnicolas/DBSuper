@@ -1,3 +1,5 @@
+from SinglePlayerStateMachine import single_player_state_machine
+
 _ERROR_MODE = -1
 
 
@@ -45,4 +47,5 @@ def _read_selection():
 
 
 def _select_mode(mode):
-    print(mode)
+    if mode == 0:
+        single_player_state_machine.run()
