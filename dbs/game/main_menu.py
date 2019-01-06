@@ -9,7 +9,7 @@ def main_menu():
     while mode == _ERROR_MODE:
         mode = _read_selection()
 
-    _select_mode(mode)
+    _run_mode(mode)
 
 
 _mode_list = ["Single Player", "LAN Multiplayer", "Online Multiplayer"]
@@ -46,6 +46,16 @@ def _read_selection():
     return int(mode) - 1
 
 
-def _select_mode(mode):
+def _run_mode(mode):
     if mode == 0:
+        single_player_state_machine.run()
+        single_player_state_machine.run()
+        single_player_state_machine.run()
+        single_player_state_machine.run()
+        single_player_state_machine.run()
+        single_player_state_machine.run()
+        single_player_state_machine.run()
+        single_player_state_machine.run()
+        single_player_state_machine.run()
+        single_player_state_machine.run()
         single_player_state_machine.run()

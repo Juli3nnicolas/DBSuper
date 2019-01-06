@@ -14,7 +14,7 @@ class Node:
         :param condition_func: Function returning true if the state machine should move
         to the next state. It should use the state_values from the GameState class.
         """
-        self._successor_list.append({condition_func, node})
+        self._successor_list.append((condition_func, node))
 
     def get_successor_list(self):
         """
@@ -35,7 +35,7 @@ class StateMachine:
     def run(self):
         # Check state transition
         for node_and_cond in self._active_node.get_successor_list():
-            if node_and_cond[0] is True:
+            if node_and_cond[0]() is True:
                 self._active_node = node_and_cond[1]
 
         # Run game state
