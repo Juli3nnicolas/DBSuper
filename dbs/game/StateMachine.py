@@ -37,6 +37,7 @@ class StateMachine:
         for node_and_cond in self._active_node.get_successor_list():
             if node_and_cond[0]() is True:
                 self._active_node = node_and_cond[1]
+                break
 
         # Run game state
         self._active_node.run()

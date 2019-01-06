@@ -27,11 +27,25 @@ def run_player2_turn():
     print(states.player2_turn)
 
 
+def transition_from_player1_turn_to_player2():
+    values = states.player1_turn.get_state_values()
+    print("transition_from_player1_turn_to_player2", values)
+    return values["deck_size"] > 0 and values["life_points"] > 0
+
+
+def transition_from_player2_turn_to_player1():
+    values = states.player1_turn.get_state_values()
+    print("transition_from_player2_turn_to_player1", values)
+    return values["deck_size"] > 0 and values["life_points"] > 0
+
+
 def transition_from_player1_turn_to_end_of_game():
     values = states.player1_turn.get_state_values()
     print("transition_from_player1_turn_to_end_of_game", values)
+
+    # In this condition, the player lost
     if values["deck_size"] == 0 or values["life_points"] == 0:
-        states.end_of_game.get_state_values()["winner"] = "player 1"
+        states.end_of_game.get_state_values()["winner"] = "player 2"
         return True
 
     return False
@@ -40,13 +54,15 @@ def transition_from_player1_turn_to_end_of_game():
 def transition_from_player2_turn_to_end_of_game():
     values = states.player2_turn.get_state_values()
     print("transition_from_player2_turn_to_end_of_game", values)
+
+    # In this condition, the player lost
     if values["deck_size"] == 0 or values["life_points"] == 0:
-        states.end_of_game.get_state_values()["winner"] = "player 2"
+        states.end_of_game.get_state_values()["winner"] = "player 1"
         return True
 
     return False
 
 
 def run_end_of_game():
-    values = states.player1_turn.get_state_values()
+    values = states.end_of_game.get_state_values()
     print(states.end_of_game, values)

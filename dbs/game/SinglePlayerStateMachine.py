@@ -18,6 +18,10 @@ class SinglePlayerStateMachine(StateMachine):
         # Build the graph
         self._active_node.add_successor(player1_turn, func.transition_from_choose_first_player_to_p1_turn)
         self._active_node.add_successor(player2_turn, func.transition_from_choose_first_player_to_p2_turn)
+
+        player1_turn.add_successor(player2_turn, func.transition_from_player1_turn_to_player2)
+        player2_turn.add_successor(player1_turn, func.transition_from_player2_turn_to_player1)
+
         player1_turn.add_successor(end_of_game, func.transition_from_player1_turn_to_end_of_game)
         player2_turn.add_successor(end_of_game, func.transition_from_player2_turn_to_end_of_game)
 

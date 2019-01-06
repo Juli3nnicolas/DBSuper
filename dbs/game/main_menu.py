@@ -59,3 +59,5 @@ def _run_mode(mode):
         single_player_state_machine.run()
         single_player_state_machine.run()
         single_player_state_machine.run()
+        single_player_state_machine.run()
+        single_player_state_machine.run()
