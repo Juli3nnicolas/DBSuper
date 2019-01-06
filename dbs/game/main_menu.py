@@ -12,7 +12,7 @@ def main_menu():
     _select_mode(mode)
 
 
-_mode_list = ["Single Player", "Multiplayer", "Online Multiplayer"]
+_mode_list = ["Single Player", "LAN Multiplayer", "Online Multiplayer"]
 
 
 def _print_main_menu():
