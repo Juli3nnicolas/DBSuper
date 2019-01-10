@@ -1,9 +1,15 @@
 import single_player_game_states as states
+from random import randint
 
 
 def choose_first_player():
     values = states.choose_first_player.get_state_values()
-    values["p1_starts"] = True
+    r = randint(1, 1000)
+    print(f"random r == {r}")
+    if r % 2 == 0:
+        values["p1_starts"] = True
+    else:
+        values["p2_starts"] = True
     print(states.choose_first_player)
 
 
