@@ -1,4 +1,4 @@
-from StateMachine import (StateMachine, Node)
+from StateMachine import (StateMachine, Node, FINAL_NODE)
 import single_player_game_states as states
 import single_player_state_functions as func
 
@@ -24,6 +24,8 @@ class SinglePlayerStateMachine(StateMachine):
 
         player1_turn.add_successor(end_of_game, func.transition_from_player1_turn_to_end_of_game)
         player2_turn.add_successor(end_of_game, func.transition_from_player2_turn_to_end_of_game)
+
+        end_of_game.add_successor(FINAL_NODE, lambda: True)
 
 
 single_player_state_machine = SinglePlayerStateMachine()

@@ -1,8 +1,12 @@
+from GameState import FINAL_GAME_STATE
+
+
 class Node:
     """
     Class defining a graph node. It is used by the StateMachine class to represent
     the state graph.
     """
+
     def __init__(self, game_state):
         self._game_state = game_state
         self._successor_list = list()
@@ -28,10 +32,15 @@ class Node:
         self._game_state.run()
 
 
+FINAL_NODE = Node(FINAL_GAME_STATE)
+
+
 class StateMachine:
     def __init__(self):
         self._active_node = None
 
+    # Runs the active node. This function returns True if the state machine should keep on running (all its states haven't finished).
+    # :return: True if the state machine should keep on running (all its states haven't finished). It returns False if all nodes have completed their execution.
     def run(self):
         # Check state transition
         for node_and_cond in self._active_node.get_successor_list():
@@ -41,6 +50,9 @@ class StateMachine:
 
         # Run game state
         self._active_node.run()
+
+        # Returns True if the active node is not the FINAL_NODE (doesn't have the same name), False otherwise
+        return False if self._active_node._game_state == FINAL_NODE._game_state else True
 
     def set_active_node(self, node: Node):
         self._active_node = node

@@ -2,7 +2,8 @@ class GameState:
     def __init__(self, name: str, state_values: dict, run_function):
         """
         Object's constructor.
-        :name: game state's name
+        :name: game state's name. Names cannot start by two leading '_' and ending by two '_'. This syntax is for
+        reserved system game states.
         :state_values: values exposed by the game state and used by the state machine to determine whether
         it should proceed to the next state
         :run_function: function called by run(). It is the state's main function and must change the state_values so
@@ -24,3 +25,6 @@ class GameState:
         State's main function. It is executed every frame.
         """
         self._run()
+
+
+FINAL_GAME_STATE = GameState(name="__FINAL_GAME_STATE__", state_values={}, run_function=lambda: True)

@@ -48,16 +48,5 @@ def _read_selection():
 
 def _run_mode(mode):
     if mode == 0:
-        single_player_state_machine.run()
-        single_player_state_machine.run()
-        single_player_state_machine.run()
-        single_player_state_machine.run()
-        single_player_state_machine.run()
-        single_player_state_machine.run()
-        single_player_state_machine.run()
-        single_player_state_machine.run()
-        single_player_state_machine.run()
-        single_player_state_machine.run()
-        single_player_state_machine.run()
-        single_player_state_machine.run()
-        single_player_state_machine.run()
+        while single_player_state_machine.run():
+            pass
